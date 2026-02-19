@@ -8,7 +8,10 @@ import {
   FaEnvelope,
   FaChevronDown,
 } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom"; // Added useLocation
+
 const logo = "/logo.png";
+
 const categories = [
   "Construction",
   "Agriculture",
@@ -20,7 +23,18 @@ const categories = [
 ];
 
 const Header = () => {
-  const [open, setOpen] = useState(false);   // ⭐ MISSING STATE FIXED
+  const [open, setOpen] = useState(false);
+  const location = useLocation(); // Added useLocation hook
+
+  // Helper function to check if a path is active
+  const isActive = (path: string): boolean => {
+    return location.pathname === path;
+  };
+
+  // Format category name for URL
+  const formatCategoryUrl = (category: string): string => {
+    return `/category/${category.toLowerCase().replace(/\s+/g, '-')}`;
+  };
 
   return (
     <header>
@@ -42,12 +56,32 @@ const Header = () => {
 
       {/* NAVBAR */}
       <nav style={styles.navbar}>
-        <img src={logo} style={styles.logo} />
+        <Link to="/" style={styles.logoLink}>
+          <img src={logo} style={styles.logo} alt="Logo" />
+        </Link>
 
         <ul style={styles.menu}>
-          <li style={{...styles.menuItem, ...styles.active }}>Home</li>
-          <li style={styles.menuItem}>About us</li>
-          <li style={styles.menuItem}>Contact</li>
+          <li style={{
+            ...styles.menuItem,
+            ...(isActive('/') ? styles.active : {})
+          }}>
+            <Link to="/" style={styles.link}>Home</Link>
+          </li>
+          
+          <li style={{
+            ...styles.menuItem,
+            ...(isActive('/about') ? styles.active : {})
+          }}>
+            <Link to="/about" style={styles.link}>About us</Link>
+          </li>
+          
+          <li style={{
+            ...styles.menuItem,
+            ...(isActive('/contact') ? styles.active : {})
+          }}>
+            <Link to="/contact" style={styles.link}>Contact</Link>
+          </li>
+          
           {/* DROPDOWN */}
           <li
             style={styles.menuItem}
@@ -60,16 +94,24 @@ const Header = () => {
 
             {open && (
               <div style={styles.dropdown}>
-                {categories.map((item, i) => (
-                  <div key={i} style={styles.dropdownItem}>
+                {categories.map((item: string, i: number) => (
+                  <Link
+                    key={i}
+                    to={formatCategoryUrl(item)}
+                    style={styles.dropdownItem}
+                    onClick={() => setOpen(false)}
+                  >
                     {item}
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}
           </li>
         </ul>
-        <FaSearch style={styles.search} />
+        
+        <button style={styles.searchButton}>
+          <FaSearch style={styles.search} />
+        </button>
       </nav>
     </header>
   );
@@ -77,7 +119,12 @@ const Header = () => {
 
 export default Header;
 
-const styles: any = {
+// Properly typed styles
+interface Styles {
+  [key: string]: React.CSSProperties;
+}
+
+const styles: Styles = {
   topbar: {
     background: "#c9a227",
     color: "#fff",
@@ -86,60 +133,106 @@ const styles: any = {
     padding: "8px 40px",
     fontSize: "14px",
     alignItems: "center",
+    flexWrap: "wrap", // Added for responsiveness
   },
-  topLeft: { display: "flex", gap: "15px" },
-  icon: { cursor: "pointer" },
-
-  topRight: { display: "flex", gap: "25px", alignItems: "center" },
-  info: { display: "flex", gap: "8px", alignItems: "center" },
-
+  topLeft: { 
+    display: "flex", 
+    gap: "15px" 
+  },
+  icon: { 
+    cursor: "pointer" 
+  },
+  topRight: { 
+    display: "flex", 
+    gap: "25px", 
+    alignItems: "center",
+    flexWrap: "wrap", // Added for responsiveness
+  },
+  info: { 
+    display: "flex", 
+    gap: "8px", 
+    alignItems: "center" 
+  },
   navbar: {
-    background: "#26375b",
-    color: "#fff",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "20px 40px",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '1rem 2rem',
+    backgroundColor: '#ffffff',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 1000,
+    flexWrap: "wrap", // Added for responsiveness
   },
-
-  logo: { height: "60px" },
-
+  logoLink: {
+    textDecoration: 'none',
+  },
+  logo: {
+    height: '50px',
+    width: 'auto',
+    cursor: 'pointer',
+  },
   menu: {
-    listStyle: "none",
-    display: "flex",
-    gap: "40px",
-    fontSize: "18px",
-    alignItems: "center",
+    display: 'flex',
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+    gap: '2rem',
+    flexWrap: "wrap", // Added for responsiveness
   },
-
-  menuItem: { cursor: "pointer", position: "relative" },
-
+  menuItem: {
+    position: 'relative',
+    padding: '0.5rem 0',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    fontWeight: 500,
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#333',
+    transition: 'color 0.3s ease',
+  },
   active: {
-    borderBottom: "3px solid #c9a227",
-    paddingBottom: "6px",
+    color: '#007bff',
+    borderBottom: '2px solid #007bff',
   },
-
-  search: { fontSize: "20px", cursor: "pointer" },
-
-  /* DROPDOWN STYLES ⭐ */
-  dropdownTitle: { display: "flex", alignItems: "center", gap: 6 },
-
+  dropdownTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    color: '#333',
+  },
   dropdown: {
-    position: "absolute",
-    top: 35,
+    position: 'absolute',
+    top: '100%',
     left: 0,
-    background: "#fff",
-    color: "#333",
-    minWidth: 220,
-    boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-    borderRadius: 6,
-    overflow: "hidden",
-    zIndex: 99,
+    backgroundColor: '#ffffff',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    borderRadius: '4px',
+    padding: '0.5rem 0',
+    minWidth: '200px',
+    zIndex: 1000,
   },
-
   dropdownItem: {
-    padding: "12px 16px",
-    borderBottom: "1px solid #eee",
-    cursor: "pointer",
+    display: 'block',
+    padding: '0.75rem 1rem',
+    color: '#333',
+    textDecoration: 'none',
+    transition: 'background-color 0.3s ease',
+    cursor: 'pointer',
+  },
+  searchButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    padding: '0.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  search: {
+    fontSize: '1.2rem',
+    color: '#333',
   },
 };
