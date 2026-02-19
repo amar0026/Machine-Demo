@@ -19,7 +19,7 @@ export default function MachineDemosByCity() {
 
         .mdc-section {
           font-family: 'Source Serif 4', Georgia, serif;
-          background: #f5f4f0;
+          background: #ffff;
           padding: 72px 48px;
           max-width: 1100px;
           margin: 0 auto;

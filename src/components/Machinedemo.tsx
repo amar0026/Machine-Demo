@@ -54,9 +54,10 @@ export default function AboutSection() {
         .about-section {
           font-family: 'Source Serif 4', Georgia, serif;
           background: #ffff;
-          padding: 45px 5px;
+          padding: 15px 5px;
           max-width: 1100px;
           margin: 0 auto;
+         
         }
 
         .about-header {

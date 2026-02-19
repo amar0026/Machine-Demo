@@ -80,7 +80,7 @@ export default Footer;
 
 const styles: any = {
   footer: {
-    background: "#11233f",
+    background: "#1b2a41",
     color: "#fff",
     padding: "70px 40px",
   },
