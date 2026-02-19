@@ -53,8 +53,8 @@ const TrendingProducts = () => {
       <div className="slider" ref={sliderRef}>
         {products.map((p, i) => (
           <div key={i} className="card">
-            <img src={p.img} className="img" />
-            <FaHeart className="heart" />
+            {/* <img src={p.img} className="img" />
+            <FaHeart className="heart" /> */}
 
             <div className="cardBody">
               <h3>{p.title}</h3>
