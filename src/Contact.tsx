@@ -21,7 +21,7 @@ export default function Contact() {
       {/* CONTACT FORM SECTION */}
       <section style={styles.formSection}>
         <form style={styles.form}>
-            <h1 style={styles.heroTitle}>Contact Us</h1>
+            <h1 style={styles.heroTitles}>Contact Us</h1>
         <p>We would love to hear from you. Fill the form and our team will contact you soon.</p>
           <h2 style={styles.formTitle}>Send Message</h2>
 
@@ -101,6 +101,13 @@ const styles: any = {
     textAlign:"center",
     marginBottom:"20px"
   },
+   heroTitles: {
+    color: "#1b2a41",
+    fontSize: "60px",
+    fontWeight: "bold",
+    
+  },
+
 
   input:{
     padding:"15px",

@@ -10,7 +10,8 @@ import {
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom"; // Added useLocation
 
-const logo = "/logo.png";
+import logo from "../assets/logo.png";
+
 
 const categories = [
   "Construction",
@@ -158,7 +159,7 @@ const styles: Styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1rem 2rem',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#1b2a41',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     position: 'sticky',
     top: 0,
@@ -169,7 +170,7 @@ const styles: Styles = {
     textDecoration: 'none',
   },
   logo: {
-    height: '50px',
+    height: '100px',
     width: 'auto',
     cursor: 'pointer',
   },
@@ -190,38 +191,41 @@ const styles: Styles = {
   },
   link: {
     textDecoration: 'none',
-    color: '#333',
+    color: '#fff',
     transition: 'color 0.3s ease',
   },
   active: {
-    color: '#007bff',
+    color: '#c9a227',
     borderBottom: '2px solid #007bff',
   },
   dropdownTitle: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    color: '#333',
-  },
-  dropdown: {
-    position: 'absolute',
-    top: '100%',
-    left: 0,
-    backgroundColor: '#ffffff',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-    borderRadius: '4px',
-    padding: '0.5rem 0',
-    minWidth: '200px',
-    zIndex: 1000,
-  },
-  dropdownItem: {
-    display: 'block',
-    padding: '0.75rem 1rem',
-    color: '#333',
-    textDecoration: 'none',
-    transition: 'background-color 0.3s ease',
-    cursor: 'pointer',
-  },
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+  color: '#fff',
+},
+
+dropdown: {
+  position: 'absolute',
+  top: '100%',              // ⭐ should be below menu, not 40%
+  left: 0,
+  backgroundColor: '#ffffff',  // ⭐ correct white color
+  boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
+  borderRadius: '6px',
+  padding: '8px 0',
+  minWidth: '220px',
+  zIndex: 9999,
+},
+
+dropdownItem: {
+  display: 'block',
+  padding: '12px 18px',
+  color: '#333333',          // ⭐ black text
+  textDecoration: 'none',
+  transition: '0.2s',
+  cursor: 'pointer',
+},
+
   searchButton: {
     background: 'none',
     border: 'none',
@@ -233,6 +237,6 @@ const styles: Styles = {
   },
   search: {
     fontSize: '1.2rem',
-    color: '#333',
+    color: '#fff',
   },
 };

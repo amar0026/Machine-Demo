@@ -1,31 +1,36 @@
- import {
-  FaFacebookF,
-  FaInstagram,
+import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaWhatsapp,
+  FaYoutube,
+  FaInstagram,
 } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer style={styles.footer}>
       <div style={styles.container}>
-        
+
         {/* LEFT - ABOUT */}
         <div style={styles.col}>
-          <img src="/logo.png" style={{ height: 70, marginBottom: 20 }} />
-
+          <img src="src/assets/logo.png" style={{ height: 100, width: 400, marginBottom: 10 }} />
           <p style={styles.text}>
-           Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
+            Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
           </p>
-
           <div style={styles.socialRow}>
-            <div style={styles.circle}><FaFacebookF /></div>
+            <div style={styles.circle}><FaYoutube /></div>
             <div style={styles.circle}><FaInstagram /></div>
           </div>
 
-         
+          {/* GET PRICING BLOCK */}
+          <div style={styles.pricingBlock}>
+            <p style={styles.pricingLabel}>G E T &nbsp; P R I C I N G</p>
+            <p style={styles.pricingDesc}>
+              Need direct supplier access? We route you to verified partners.
+            </p>
+            <a href="#" style={styles.pricingLink}>Visit MachineLine</a>
+          </div>
         </div>
 
         {/* LINKS */}
@@ -42,7 +47,6 @@ const Footer = () => {
         {/* CONTACT */}
         <div style={styles.col}>
           <h3 style={styles.heading}>Contact</h3>
-
           <p style={styles.contact}><FaEnvelope /> info@actaxsolution.in</p>
           <p style={styles.contact}><FaWhatsapp /> +918076699897</p>
           <p style={styles.contact}><FaPhoneAlt /> +919217639029</p>
@@ -54,16 +58,13 @@ const Footer = () => {
         {/* CONTACT FORM */}
         <div style={styles.col}>
           <h3 style={styles.heading}>Contact Us</h3>
-
           <input placeholder="Your Name" style={styles.input} />
           <input placeholder="Mobile Number" style={styles.input} />
           <input placeholder="Email Address" style={styles.input} />
-
           <button style={styles.btn}>Send Message</button>
         </div>
-      </div>
 
-     
+      </div>
     </footer>
   );
 };
@@ -77,17 +78,13 @@ const styles: any = {
     padding: "70px 40px",
     position: "relative",
   },
-
   container: {
     display: "grid",
     gridTemplateColumns: "1.3fr 1fr 1.2fr 1.3fr",
     gap: 40,
   },
-
   col: { display: "flex", flexDirection: "column" },
-
-  text: { lineHeight: 1.8, color: "#dcdcdc" },
-
+  text: { lineHeight: 1.5, color: "#dcdcdc" },
   heading: {
     fontSize: 22,
     marginBottom: 20,
@@ -95,23 +92,20 @@ const styles: any = {
     width: "fit-content",
     paddingBottom: 6,
   },
-
   links: {
     listStyle: "none",
     lineHeight: 2.4,
     padding: 0,
     cursor: "pointer",
   },
-
   contact: {
     display: "flex",
     gap: 10,
     marginBottom: 15,
     color: "#ddd",
+    alignItems: "flex-start",
   },
-
   socialRow: { display: "flex", gap: 15, marginTop: 20 },
-
   circle: {
     width: 45,
     height: 45,
@@ -124,6 +118,36 @@ const styles: any = {
     cursor: "pointer",
   },
 
+  /* GET PRICING block */
+  pricingBlock: {
+    marginTop: 24,
+    padding: "20px 18px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+  },
+  pricingLabel: {
+    fontSize: 20,
+    letterSpacing: "0.18em",
+    color: "#fff",
+    margin: 0,
+    fontWeight: 600,
+    textTransform: "uppercase",
+  },
+  pricingDesc: {
+    fontSize: 14,
+    color: "#cbd5e0",
+    lineHeight: 1.6,
+    margin: 0,
+  },
+  pricingLink: {
+    color: "#c9a227",
+    fontWeight: 600,
+    fontSize: 15,
+    textDecoration: "none",
+    marginTop: 4,
+    display: "inline-block",
+  },
 
   input: {
     background: "#e7e7e7",
@@ -132,7 +156,6 @@ const styles: any = {
     borderRadius: 6,
     marginBottom: 15,
   },
-
   btn: {
     background: "#c9a227",
     border: "none",
@@ -144,5 +167,4 @@ const styles: any = {
     marginTop: 10,
     width: "60%",
   },
-
 };

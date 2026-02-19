@@ -1,53 +1,58 @@
 import heroBg from "./assets/machinedemo.jpeg";
 import { FaSearch } from "react-icons/fa";
+import MachineDemo from "./components/machinedemo";
+import MachineDemosByCity from "./components/Democity";
+
+
 export default function Home() {
-    return (
-        <>
-            <section
-                className="hero"
-                style={{ backgroundImage: `url(${heroBg})` }}
-            >
-                <div className="overlay">
-                    <div className="content">
-                        <h1>Discover Machines Before You Buy</h1>
+  return (
+    <>
+      <section
+        className="hero"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="overlay">
+          <div className="content">
+            <h1>Discover Machines Before You Buy</h1>
 
-                        <p className="subtitle">
-                            Watch real demos, compare machines, and connect with trusted suppliers across India.
-                        </p>
+            <p className="subtitle">
+              Watch real demos, compare machines, and connect with trusted suppliers across India.
+            </p>
 
-                        <p className="desc">
-                            Machine Demo helps farmers, contractors, and businesses explore construction,
-                            agriculture, and industrial machinery with videos, specifications and direct supplier access.
-                        </p>
+            <p className="desc">
+              Machine Demo helps farmers, contractors, and businesses explore construction,
+              agriculture, and industrial machinery with videos, specifications and direct supplier access.
+            </p>
 
-                        {/* SEARCH */}
-                        <div className="searchBox">
-                            <input
-                                type="text"
-                                placeholder="Search machines like Excavator, Rice Mill, Power Weeder..."
-                            />
-                            <button className="searchBtn">
-                                <FaSearch />
-                            </button>
-                        </div>
+            {/* SEARCH */}
+            <div className="searchBox">
+              <input
+                type="text"
+                placeholder="Search machines like Excavator, Rice Mill, Power Weeder..."
+              />
+              <button className="searchBtn">
+                <FaSearch />
+              </button>
+            </div>
 
 
-                        {/* BUTTONS */}
-                        <div className="buttons">
-                            <button className="yellowBtn">Browse Machines</button>
-                            <button className="darkBtn">Watch Demo Videos</button>
-                        </div>
+            {/* BUTTONS */}
+            <div className="buttons">
+              <button className="yellowBtn">Browse Machines</button>
+              <button className="darkBtn">Watch Demo Videos</button>
+            </div>
 
-                        <div className="trust">
-                            ✓ Trusted by machinery buyers across India &nbsp;&nbsp;
-                            ✓ Real demo videos & verified suppliers
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CSS INSIDE SAME FILE */}
-            <style>{`
+            <div className="trust">
+              ✓ Trusted by machinery buyers across India &nbsp;&nbsp;
+              ✓ Real demo videos & verified suppliers
+            </div>
+          </div>
+        </div>
+      </section>
+      <MachineDemo/>
+      <MachineDemosByCity/>
+      {/* CSS INSIDE SAME FILE */}
+      <style>{`
         .hero {
           height: 100vh;
           background-size: cover;
@@ -168,6 +173,6 @@ export default function Home() {
           .buttons{flex-direction:column}
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 }
