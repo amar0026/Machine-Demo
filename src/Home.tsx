@@ -1,6 +1,6 @@
 import heroBg from "./assets/machinedemo.jpeg";
 import { FaSearch } from "react-icons/fa";
-import MachineDemo from "./components/machinedemo";
+import MachineDemo from "./components/Machinedemo";
 import MachineDemosByCity from "./components/Democity";
 
 
