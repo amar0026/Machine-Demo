@@ -127,7 +127,7 @@ interface Styles {
 
 const styles: Styles = {
   topbar: {
-    background: "#c9a227",
+    background: "#1b2a41",
     color: "#fff",
     display: "flex",
     justifyContent: "space-between",
@@ -154,18 +154,19 @@ const styles: Styles = {
     gap: "8px", 
     alignItems: "center" 
   },
-  navbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1rem 2rem',
-    backgroundColor: '#1b2a41',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-    position: 'sticky',
-    top: 0,
-    zIndex: 1000,
-    flexWrap: "wrap", // Added for responsiveness
-  },
+ navbar: {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: '0.1rem 2rem',   // ↓ reduced height
+  backgroundColor: '#c9a227',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+  position: 'sticky',
+  top: 0,
+  zIndex: 1000,
+  flexWrap: "wrap",
+},
+
   logoLink: {
     textDecoration: 'none',
   },

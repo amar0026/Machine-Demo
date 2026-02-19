@@ -2,6 +2,7 @@ import heroBg from "./assets/machinedemo.jpeg";
 import { FaSearch } from "react-icons/fa";
 import MachineDemo from "./components/Machinedemo";
 import MachineDemosByCity from "./components/Democity";
+import Videosection from "./components/Videosection";
 
 
 export default function Home() {
@@ -49,6 +50,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Videosection/>
       <MachineDemo/>
       <MachineDemosByCity/>
       {/* CSS INSIDE SAME FILE */}

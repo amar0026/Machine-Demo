@@ -6,6 +6,7 @@ import {
   FaYoutube,
   FaInstagram,
 } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -14,22 +15,28 @@ const Footer = () => {
 
         {/* LEFT - ABOUT */}
         <div style={styles.col}>
-          <img src="src/assets/logo.png" style={{ height: 100, width: 400, marginBottom: 10 }} />
+          <img src={logo} style={styles.logo} alt="logo" />
+
           <p style={styles.text}>
             Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
           </p>
-          <div style={styles.socialRow}>
-            <div style={styles.circle}><FaYoutube /></div>
-            <div style={styles.circle}><FaInstagram /></div>
-          </div>
 
           {/* GET PRICING BLOCK */}
           <div style={styles.pricingBlock}>
-            <p style={styles.pricingLabel}>G E T &nbsp; P R I C I N G</p>
+            <p style={styles.pricingLabel}>GET&nbsp;PRICING</p>
+             <div style={styles.yellowLine}></div>
             <p style={styles.pricingDesc}>
               Need direct supplier access? We route you to verified partners.
             </p>
-            <a href="#" style={styles.pricingLink}>Visit MachineLine</a>
+            <div style={styles.linkContainer}>
+              <a href="#" style={styles.pricingLink}>Visit MachineLine</a>
+             
+            </div>
+          </div>
+
+          <div style={styles.socialRow}>
+            <div style={styles.circle}><FaYoutube /></div>
+            <div style={styles.circle}><FaInstagram /></div>
           </div>
         </div>
 
@@ -47,11 +54,11 @@ const Footer = () => {
         {/* CONTACT */}
         <div style={styles.col}>
           <h3 style={styles.heading}>Contact</h3>
-          <p style={styles.contact}><FaEnvelope /> info@actaxsolution.in</p>
-          <p style={styles.contact}><FaWhatsapp /> +918076699897</p>
-          <p style={styles.contact}><FaPhoneAlt /> +919217639029</p>
+          <p style={styles.contact}><FaEnvelope style={styles.icon} /> info@actaxsolution.in</p>
+          <p style={styles.contact}><FaWhatsapp style={styles.icon} /> +918076699897</p>
+          <p style={styles.contact}><FaPhoneAlt style={styles.icon} /> +919217639029</p>
           <p style={styles.contact}>
-            <FaMapMarkerAlt /> Office No. 240, Apsara Complex Ghaziabad Uttar Pradesh 201005 India
+            <FaMapMarkerAlt style={styles.icon} /> Office No. 240, Apsara Complex Ghaziabad Uttar Pradesh 201005 India
           </p>
         </div>
 
@@ -76,15 +83,39 @@ const styles: any = {
     background: "#11233f",
     color: "#fff",
     padding: "70px 40px",
-    position: "relative",
   },
+
   container: {
     display: "grid",
-    gridTemplateColumns: "1.3fr 1fr 1.2fr 1.3fr",
-    gap: 40,
+    gridTemplateColumns: "repeat(4, 1fr)",
+    alignItems: "start",
+    gap: 50,
   },
-  col: { display: "flex", flexDirection: "column" },
-  text: { lineHeight: 1.5, color: "#dcdcdc" },
+
+  col: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+    maxWidth: 320,
+  },
+
+  logo: {
+    height: 80,
+    width: "fit-content",
+    maxWidth: 240,
+    objectFit: "contain",
+    marginBottom: 10,
+    display: "block",
+  },
+
+  text: {
+    lineHeight: 1.6,
+    color: "#dcdcdc",
+    maxWidth: 260,
+    margin: "0 0 0 0",
+    textAlign: "left",
+  },
+
   heading: {
     fontSize: 22,
     marginBottom: 20,
@@ -92,20 +123,35 @@ const styles: any = {
     width: "fit-content",
     paddingBottom: 6,
   },
+
   links: {
     listStyle: "none",
     lineHeight: 2.4,
     padding: 0,
+    margin: 0,
     cursor: "pointer",
   },
+
   contact: {
     display: "flex",
     gap: 10,
-    marginBottom: 15,
+    margin: "0 0 15px 0",
     color: "#ddd",
     alignItems: "flex-start",
+    textAlign: "left",
   },
-  socialRow: { display: "flex", gap: 15, marginTop: 20 },
+
+  icon: {
+    minWidth: 20,
+    marginTop: 3,
+  },
+
+  socialRow: {
+    display: "flex",
+    gap: 15,
+    marginTop: 10,
+  },
+
   circle: {
     width: 45,
     height: 45,
@@ -116,37 +162,63 @@ const styles: any = {
     alignItems: "center",
     justifyContent: "center",
     cursor: "pointer",
+    transition: "all 0.3s ease",
+    ":hover": {
+      background: "#c9a227",
+      color: "#fff",
+    },
   },
 
-  /* GET PRICING block */
   pricingBlock: {
-    marginTop: 24,
-    padding: "20px 18px",
+    marginTop: 10,
     display: "flex",
     flexDirection: "column",
     gap: 8,
+    width: "100%",
   },
+
   pricingLabel: {
     fontSize: 18,
     letterSpacing: "0.18em",
     color: "#fff",
-    margin: 0,
     fontWeight: 600,
-    textTransform: "uppercase",
+    textTransform: "uppercase" as const,
+    margin: "0",
+    textAlign: "left",
   },
+
   pricingDesc: {
     fontSize: 14,
     color: "#cbd5e0",
     lineHeight: 1.6,
-    margin: 0,
+    margin: "0",
+    textAlign: "left",
   },
+
+  linkContainer: {
+    display: "flex",
+    flexDirection: "column" as const,
+    gap: 4,
+    marginTop: 4,
+  },
+
   pricingLink: {
     color: "#c9a227",
     fontWeight: 600,
     fontSize: 15,
     textDecoration: "none",
-    marginTop: 4,
     display: "inline-block",
+    textAlign: "left",
+    ":hover": {
+      textDecoration: "underline",
+    },
+  },
+
+  yellowLine: {
+    width: "135px",
+    height: "2px",
+    backgroundColor: "#c9a227",
+    marginTop: "2px",
   },
 
   input: {
@@ -155,7 +227,10 @@ const styles: any = {
     padding: 14,
     borderRadius: 6,
     marginBottom: 15,
+    width: "100%",
+    boxSizing: "border-box" as const,
   },
+
   btn: {
     background: "#c9a227",
     border: "none",
@@ -166,5 +241,9 @@ const styles: any = {
     cursor: "pointer",
     marginTop: 10,
     width: "60%",
+    transition: "all 0.3s ease",
+    ":hover": {
+      background: "#b18a20",
+    },
   },
 };

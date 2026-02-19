@@ -141,7 +141,7 @@ export default function InfoCards() {
           {/* About */}
           <Card title="About" icon={accountantIcon}>
             <p>
-              AC TAX Solutions provides expert accounting, taxation, and statutory compliance services.
+             Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
             </p>
           </Card>
 

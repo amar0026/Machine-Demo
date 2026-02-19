@@ -53,8 +53,8 @@ export default function AboutSection() {
 
         .about-section {
           font-family: 'Source Serif 4', Georgia, serif;
-          background: #f5f4f0;
-          padding: 72px 48px;
+          background: #ffff;
+          padding: 45px 5px;
           max-width: 1100px;
           margin: 0 auto;
         }
