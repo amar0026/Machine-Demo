@@ -127,7 +127,7 @@ const styles: any = {
     gap: 8,
   },
   pricingLabel: {
-    fontSize: 20,
+    fontSize: 18,
     letterSpacing: "0.18em",
     color: "#fff",
     margin: 0,

@@ -1,5 +1,5 @@
 
-import AboutSection from "./components/machinedemo";
+import AboutSection from "./components/Machinedemo";
 
 
 export default function About() {
