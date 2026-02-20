@@ -1,217 +1,221 @@
 import { useRef, useEffect } from "react";
-import {
-  FaStar,
-  FaHeart,
-  FaChevronLeft,
-  FaChevronRight,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaArrowRight, FaHeart } from "react-icons/fa";
 
-const TrendingProducts = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  // inject css once
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.innerHTML = styles;
-    document.head.appendChild(style);
-  }, []);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!sliderRef.current) return;
-    const amount = 320;
-    sliderRef.current.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
-
-  const products = [
-  { title: "Accounting Services", price: "₹499", video: "/videos/v1.mp4" },
-  { title: "GST Registration", price: "₹999", video: "/videos/v2.mp4" },
-  { title: "Income Tax Filing", price: "₹799", video: "/videos/v3.mp4" },
-  { title: "Business Setup", price: "₹1499", video: "/videos/v4.mp4" },
-  { title: "Trademark Filing", price: "₹1299", video: "/videos/v5.mp4" },
+const categories = [
+  {
+    label: "CONSTRUCTION MACHINES",
+    products: [
+      { title: "Mastering the Komatsu PC210 Excavator: A Friendly Operating....", category: "Construction", location: "Japan", image: "/images/c1.jpg" },
+      { title: "Top 5 Largest Mining Excavators in the World: The Giants of....", category: "Construction", location: "Europe", image: "/images/c2.jpg" },
+    ],
+  },
+  {
+    label: "AGRICULTURE MACHINES",
+    products: [
+      { title: "Mini Rice Mill Machine: Revolutionizing Small Rice....", category: "Agriculture", location: "India", image: "/images/a1.jpg" },
+      { title: "KAMA 6N70 Mini Rice Mill: High Efficiency at Affordable Price....", category: "Agriculture", location: "India", image: "/images/a2.jpg" },
+      { title: "Compact Paddy Demo – Faster Pi...", category: "Agriculture", location: "•", image: "/images/a3.jpg" },
+    ],
+  },
+  {
+    label: "Our Picks",
+    products: [
+      { title: "Introducing the 6N70 Pro Max Rice Mill: A Game....", category: "Agriculture", location: "India", image: "/images/p1.jpg" },
+      { title: "Mastering the Komatsu PC210 Excavator: A....", category: "Construction", location: "Japan", image: "/images/p2.jpg" },
+      { title: "Compact Paddy Demo – Faster Pi...", category: "Agriculture", location: "•", image: "/images/p3.jpg" },
+    ],
+  },
 ];
 
-
-  return (
-    <section className="section">
-      <div className="header">
-        <h1>Trending Services</h1>
-
-        <div className="controls">
-          <button onClick={() => scroll("left")} className="iconBtn">
-            <FaChevronLeft />
-          </button>
-          <button onClick={() => scroll("right")} className="iconBtn">
-            <FaChevronRight />
-          </button>
-        </div>
+const ProductCard = ({ title, category, location, image }: { title: string; category: string; location: string; image: string }) => (
+  <div className="card">
+    <div className="imgWrap">
+      <img src={image} alt={title} className="cardImg" onError={(e) => { (e.target as HTMLImageElement).style.background = "#dde3ec"; }} />
+      <FaHeart className="heartIcon" />
+    </div>
+    <div className="cardInfo">
+      <p className="cardTitle">{title}</p>
+      <div className="cardMeta">
+        <span className="tag">{category}</span>
+        <span className="dot">•</span>
+        <span className="loc">{location}</span>
       </div>
+    </div>
+  </div>
+);
 
+const Section = ({ label, products }: { label: string; products: typeof categories[0]["products"] }) => {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  return (
+    <div className="sectionBlock">
+      <div className="sectionHeader">
+        <h1 className="sectionTitle">{label}</h1>
+        <button className="viewAll">View all <FaArrowRight style={{ display: "inline", marginLeft: 6 }} /></button>
+      </div>
       <div className="slider" ref={sliderRef}>
         {products.map((p, i) => (
-          <div key={i} className="card">
-          
-            <FaHeart className="heart" />
-
-            <div className="cardBody">
-              <h3>{p.title}</h3>
-
-              <div className="rating">
-                <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                <span>(120)</span>
-              </div>
-
-              <div className="bottom">
-                <span className="price">{p.price}</span>
-                <button className="bookBtn">Book now</button>
-              </div>
-            </div>
-          </div>
+          <ProductCard key={i} {...p} />
         ))}
       </div>
+    </div>
+  );
+};
 
-      <div className="viewMoreWrap">
-        <button className="viewBtn">
-          View more <FaArrowRight />
-        </button>
-      </div>
-    </section>
+const TrendingProducts = () => {
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = css;
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
+  return (
+    <div className="wrapper">
+      {categories.map((cat, i) => (
+        <Section key={i} label={cat.label} products={cat.products} />
+      ))}
+    </div>
   );
 };
 
 export default TrendingProducts;
 
-const styles = `
-.section{
-  padding:50px 80px;
-  background:#fff;
-  font-family:sans-serif;
+const css = `
+*{box-sizing:border-box;margin:0;padding:0;}
+
+.wrapper{
+  font-family:'Segoe UI',sans-serif;
+  background:#f5f7fa;
+  padding:40px 60px;
+  width:100%;
+  min-height:100vh;
 }
 
-.header{
+.sectionBlock{
+  margin-bottom:36px;
+}
+
+.sectionHeader{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:25px;
+  margin-bottom:14px;
 }
 
-.controls{
-  display:flex;
-  gap:12px;
+.sectionTitle{
+font-family: 'Playfair Display', Georgia, serif;
+          font-size: clamp(2rem, 4vw, 2.8rem);
+          font-weight: 1000;
+          color: #1a2744;
+  font-size:15px;
+ 
+  letter-spacing:0.06em;
+  
+  text-transform:uppercase;
 }
 
-.iconBtn{
-  width:40px;
-  height:40px;
-  border-radius:50%;
+.viewAll{
+  background:#f5c518;
   border:none;
-  background:#c9a227;
-  color:#11233f;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
-}
-
-.slider{
-  display:flex;
-  gap:25px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  padding:10px;
-}
-
-/* 🔥 HIDE SCROLLBAR */
-.slider::-webkit-scrollbar{
-  display:none;
-}
-.slider{
-  -ms-overflow-style:none;
-  scrollbar-width:none;
-}
-
-.card{
-  min-width:280px;
-  background:#fff;
   border-radius:20px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 8px 24px rgba(0,0,0,0.12);
-}
-
-<video
-  src={p.video}
-  className="video"
-  autoPlay
-  loop
-  muted
-  playsInline
-/>
-
-
-.heart{
-  position:absolute;
-  top:15px;
-  right:15px;
-  background:#fff;
-  padding:8px;
-  border-radius:50%;
-  color:#c9a227;
-  box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
-
-.cardBody{
-  padding:18px;
-}
-
-.rating{
-  color:#f7b500;
+  padding:7px 14px;
+  font-size:12px;
+  font-weight:600;
+  color:#111;
+  cursor:pointer;
   display:flex;
   align-items:center;
   gap:4px;
-  margin:8px 0;
+  white-space:nowrap;
 }
 
-.bottom{
+.slider{
   display:flex;
-  justify-content:space-between;
+  gap:14px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:6px;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+}
+.slider::-webkit-scrollbar{display:none;}
+
+.card{
+  min-width:280px;
+  max-width:280px;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  flex-shrink:0;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
+}
+.imgWrap{
+  position:relative;
+  width:100%;
+  height:180px;
+  background:#e2e8f0;
+}
+
+.cardImg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.heartIcon{
+  position:absolute;
+  top:8px;
+  right:8px;
+  color:#fff;
+  background:rgba(0,0,0,0.25);
+  padding:5px;
+  border-radius:50%;
+  font-size:14px;
+  backdrop-filter:blur(4px);
+}
+
+.cardInfo{
+  padding:10px 10px 12px;
+}
+
+.cardTitle{
+  font-size:14px;
+  font-weight:600;
+  color:#111;
+  line-height:1.5;
+  margin-bottom:8px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.cardMeta{
+  display:flex;
   align-items:center;
-  margin-top:12px;
+  gap:4px;
+  flex-wrap:wrap;
 }
 
-.price{
-  font-weight:bold;
-  color:#11233f;
+.tag{
+  font-size:10px;
+  color:#555;
+  font-weight:500;
 }
 
-.bookBtn{
-  background:#c9a227;
-  border:none;
-  padding:8px 16px;
-  border-radius:20px;
-  cursor:pointer;
-  color:#11233f;
+.dot{
+  font-size:10px;
+  color:#aaa;
 }
 
-.viewMoreWrap{
-  text-align:center;
-  margin-top:40px;
-}
-
-.viewBtn{
-  border:1px solid #aaa;
-  padding:14px 28px;
-  border-radius:30px;
-  background:#c9a227;
-  color:#11233f;
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:16px;
+.loc{
+  font-size:10px;
+  color:#555;
 }
 `;

@@ -1,4 +1,4 @@
- import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaSearch, FaTractor, FaSeedling } from "react-icons/fa";
 
 const searchTerms = [
@@ -50,39 +50,8 @@ export default function PopularSearches() {
         position: relative;
         overflow: hidden;
         font-family: 'Barlow', sans-serif;
+       
         padding: 0;
-      }
-
-      /* Diagonal grain texture overlay */
-      .ps-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: repeating-linear-gradient(
-          -45deg,
-          rgba(0,0,0,0.03) 0px,
-          rgba(0,0,0,0.03) 1px,
-          transparent 1px,
-          transparent 8px
-        );
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* Large decorative BG text */
-      .ps-bg-text {
-        position: absolute;
-        top: -10px;
-        right: -20px;
-        font-family: 'Barlow Condensed', sans-serif;
-        font-size: 180px;
-        font-weight: 900;
-        color: rgba(0,0,0,0.05);
-        letter-spacing: -5px;
-        line-height: 1;
-        user-select: none;
-        pointer-events: none;
-        z-index: 0;
       }
 
       .ps-inner {
@@ -91,7 +60,6 @@ export default function PopularSearches() {
         padding: 48px 60px 52px;
       }
 
-      /* Header row */
       .ps-header {
         display: flex;
         align-items: center;
@@ -108,8 +76,8 @@ export default function PopularSearches() {
       }
 
       .ps-icon-wrap {
-        width: 42px;
-        height: 42px;
+        width: 50px;
+        height: 50px;
         background: #11233f;
         border-radius: 12px;
         display: flex;
@@ -121,8 +89,8 @@ export default function PopularSearches() {
       }
 
       .ps-heading {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-size: 13px;
+        font-family:  'Playfair Display', Georgia, serif;
+        font-size: 20px;
         font-weight: 700;
         letter-spacing: 4px;
         text-transform: uppercase;
@@ -130,7 +98,6 @@ export default function PopularSearches() {
         opacity: 0.7;
       }
 
-      /* Search bar */
       .ps-searchbar {
         display: flex;
         align-items: center;
@@ -154,7 +121,7 @@ export default function PopularSearches() {
         outline: none;
         color: #fff;
         font-family: 'Barlow', sans-serif;
-        font-size: 14px;
+        font-size: 20px;
         padding: 12px 0;
       }
 
@@ -183,7 +150,6 @@ export default function PopularSearches() {
         transform: scale(1.08);
       }
 
-      /* Divider */
       .ps-divider {
         width: 100%;
         height: 2px;
@@ -192,7 +158,6 @@ export default function PopularSearches() {
         border-radius: 2px;
       }
 
-      /* Grid */
       .ps-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -212,45 +177,25 @@ export default function PopularSearches() {
         padding-left: 0;
       }
 
-      /* Individual tag */
       .ps-tag {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-family: 'Barlow', sans-serif;
-        font-size: 15px;
+        font-size: 19px;
         font-weight: 500;
         color: #11233f;
         padding: 9px 14px 9px 0;
         cursor: pointer;
-        border-bottom: 1px solid transparent;
         transition: all 0.18s ease;
         opacity: 0;
         transform: translateY(8px);
         width: fit-content;
         border-radius: 4px;
-        position: relative;
       }
 
       .ps-tag.visible {
         opacity: 1;
         transform: translateY(0);
-      }
-
-      .ps-tag::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #11233f;
-        transition: width 0.22s ease;
-      }
-
-      .ps-tag:hover::after,
-      .ps-tag.active::after {
-        width: 100%;
       }
 
       .ps-tag:hover,
@@ -275,29 +220,8 @@ export default function PopularSearches() {
       .ps-tag.active .ps-tag-dot {
         opacity: 1;
         transform: scale(1.5);
-        background: #11233f;
       }
 
-      /* Footer strip */
-      .ps-footer {
-        margin-top: 36px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        opacity: 0.5;
-        font-size: 12px;
-        font-family: 'Barlow Condensed', sans-serif;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #11233f;
-      }
-
-      .ps-footer-line {
-        flex: 1;
-        height: 1px;
-        background: #11233f;
-        opacity: 0.3;
-      }
 
       @media (max-width: 768px) {
         .ps-grid { grid-template-columns: 1fr 1fr; }
@@ -305,7 +229,6 @@ export default function PopularSearches() {
         .ps-inner { padding: 36px 24px 40px; }
         .ps-searchbar { width: 100%; }
         .ps-header { flex-direction: column; align-items: flex-start; }
-        .ps-bg-text { font-size: 100px; }
       }
     `;
     if (!document.getElementById("ps-styles")) {
@@ -315,10 +238,7 @@ export default function PopularSearches() {
 
   return (
     <div className="ps-section" ref={ref}>
-      <div className="ps-bg-text">AGRI</div>
-
       <div className="ps-inner">
-        {/* Header */}
         <div className="ps-header">
           <div className="ps-label-group">
             <div className="ps-icon-wrap">
@@ -327,7 +247,6 @@ export default function PopularSearches() {
             <span className="ps-heading">Popular Searches</span>
           </div>
 
-          {/* Search bar */}
           <div className="ps-searchbar">
             <input
               type="text"
@@ -343,7 +262,6 @@ export default function PopularSearches() {
 
         <div className="ps-divider" />
 
-        {/* 3-column grid */}
         <div className="ps-grid">
           {columns.map((col, ci) => (
             <div className="ps-col" key={ci}>
@@ -353,7 +271,9 @@ export default function PopularSearches() {
                 return (
                   <div
                     key={key}
-                    className={`ps-tag ${visible ? "visible" : ""} ${hoveredIdx === key ? "active" : ""}`}
+                    className={`ps-tag ${visible ? "visible" : ""} ${
+                      hoveredIdx === key ? "active" : ""
+                    }`}
                     style={{ transitionDelay: `${delay}ms` }}
                     onMouseEnter={() => setHoveredIdx(key)}
                     onMouseLeave={() => setHoveredIdx(null)}
@@ -368,14 +288,6 @@ export default function PopularSearches() {
           ))}
         </div>
 
-        {/* Footer strip */}
-        <div className="ps-footer">
-          <FaSeedling />
-          <div className="ps-footer-line" />
-          <span>Agri Marketplace</span>
-          <div className="ps-footer-line" />
-          <FaSeedling />
-        </div>
       </div>
     </div>
   );

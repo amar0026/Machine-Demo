@@ -40,10 +40,13 @@ export default function MachineDemosByCity() {
         }
 
         .mdc-subtitle {
+          display: inline-block;
+          background: #f5c800;
+          padding: 7px 20px;
           font-size: 1.05rem;
-          color: #555;
-          margin: 0;
           font-weight: 400;
+          color: #1a2744;
+          border-radius: 2px;
         }
 
         .mdc-body {
