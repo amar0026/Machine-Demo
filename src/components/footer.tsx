@@ -80,29 +80,30 @@ export default Footer;
 const styles: any = {
 
   footer: {
-    background: "#f4c430",   // Yellow background
+    background: "#f4c430",
     color: "#1b2a41",
     padding: "30px 40px",
-    maxwidth:"1920px"
+    maxWidth: "1920px",
+    margin: "0 auto",
   },
 
   container: {
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
     gap: 50,
   },
 
- col: {
-  display: "flex",
-  flexDirection: "column",
-  gap: 14,
-},
+  col: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+  },
 
- logo: {
-  height: 110,
-  objectFit: "contain",
-  alignSelf: "flex-start",
-},
+  logo: {
+    height: 110,
+    objectFit: "contain",
+    alignSelf: "flex-start",
+  },
 
   text: {
     lineHeight: 1.6,
@@ -132,7 +133,6 @@ const styles: any = {
   },
 
   icon: {
-   
     minWidth: 20,
     marginTop: 3,
   },

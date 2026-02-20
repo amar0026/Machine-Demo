@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  
   FaInstagram,
   FaSearch,
   FaPhoneAlt,
@@ -9,8 +8,7 @@ import {
   FaChevronDown,
   FaYoutube,
 } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom"; // Added useLocation
-
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const categories = [
@@ -25,16 +23,14 @@ const categories = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const location = useLocation(); // Added useLocation hook
+  const location = useLocation();
 
-  // Helper function to check if a path is active
   const isActive = (path: string): boolean => {
     return location.pathname === path;
   };
 
-  // Format category name for URL
   const formatCategoryUrl = (category: string): string => {
-    return `/category/${category.toLowerCase().replace(/\s+/g, '-')}`;
+    return `/category/${category.toLowerCase().replace(/\s+/g, "-")}`;
   };
 
   return (
@@ -47,8 +43,12 @@ const Header = () => {
         </div>
 
         <div style={styles.topRight}>
-          <span style={styles.info}><FaEnvelope /> info@actaxsolutions.in</span>
-          <span style={styles.info}><FaPhoneAlt /> +918076699897</span>
+          <span style={styles.info}>
+            <FaEnvelope /> info@actaxsolutions.in
+          </span>
+          <span style={styles.info}>
+            <FaPhoneAlt /> +918076699897
+          </span>
           <span style={styles.info}>
             <FaMapMarkerAlt /> Ghaziabad Uttar Pradesh 201005 India
           </span>
@@ -62,27 +62,39 @@ const Header = () => {
         </Link>
 
         <ul style={styles.menu}>
-          <li style={{
-            ...styles.menuItem,
-            ...(isActive('/') ? styles.active : {})
-          }}>
-            <Link to="/" style={styles.link}>Home</Link>
+          <li
+            style={{
+              ...styles.menuItem,
+              ...(isActive("/") ? styles.active : {}),
+            }}
+          >
+            <Link to="/" style={styles.link}>
+              Home
+            </Link>
           </li>
-          
-          <li style={{
-            ...styles.menuItem,
-            ...(isActive('/about') ? styles.active : {})
-          }}>
-            <Link to="/about" style={styles.link}>About us</Link>
+
+          <li
+            style={{
+              ...styles.menuItem,
+              ...(isActive("/about") ? styles.active : {}),
+            }}
+          >
+            <Link to="/about" style={styles.link}>
+              About us
+            </Link>
           </li>
-          
-          <li style={{
-            ...styles.menuItem,
-            ...(isActive('/contact') ? styles.active : {})
-          }}>
-            <Link to="/contact" style={styles.link}>Contact</Link>
+
+          <li
+            style={{
+              ...styles.menuItem,
+              ...(isActive("/contact") ? styles.active : {}),
+            }}
+          >
+            <Link to="/contact" style={styles.link}>
+              Contact
+            </Link>
           </li>
-          
+
           {/* DROPDOWN */}
           <li
             style={styles.menuItem}
@@ -109,7 +121,7 @@ const Header = () => {
             )}
           </li>
         </ul>
-        
+
         <button style={styles.searchButton}>
           <FaSearch style={styles.search} />
         </button>
@@ -120,7 +132,6 @@ const Header = () => {
 
 export default Header;
 
-// Properly typed styles
 interface Styles {
   [key: string]: React.CSSProperties;
 }
@@ -134,112 +145,107 @@ const styles: Styles = {
     padding: "8px 40px",
     fontSize: "14px",
     alignItems: "center",
-    flexWrap: "wrap", // Added for responsiveness
-    maxWidth: "1920px"
+    flexWrap: "wrap",
+    maxWidth: "1920px",
   },
-  topLeft: { 
-    display: "flex", 
-    gap: "15px" 
+  topLeft: {
+    display: "flex",
+    gap: "15px",
   },
-  icon: { 
-    cursor: "pointer" 
+  icon: {
+    cursor: "pointer",
   },
-  topRight: { 
-    display: "flex", 
-    gap: "25px", 
+  topRight: {
+    display: "flex",
+    gap: "25px",
     alignItems: "center",
-    flexWrap: "wrap", // Added for responsiveness
+    flexWrap: "wrap",
   },
-  info: { 
-    display: "flex", 
-    gap: "8px", 
-    alignItems: "center" 
+  info: {
+    display: "flex",
+    gap: "8px",
+    alignItems: "center",
   },
- navbar: {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '0.1rem 2rem',   // ↓ reduced height
-  backgroundColor: '#f4c430',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-  position: 'sticky',
-  top: 0,
-  zIndex: 1000,
-  flexWrap: "wrap",
-},
-
+  navbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0.1rem 2rem",
+    backgroundColor: "#f4c430",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
+    flexWrap: "wrap",
+  },
   logoLink: {
-    
-    textDecoration: 'none',
+    textDecoration: "none",
   },
   logo: {
-    height: '100px',
-    width: 'auto',
-    cursor: 'pointer',
+    height: "100px",
+    width: "auto",
+    cursor: "pointer",
   },
   menu: {
-    display: 'flex',
-    listStyle: 'none',
+    display: "flex",
+    listStyle: "none",
     margin: 0,
     padding: 0,
-    gap: '2rem',
-    flexWrap: "wrap", // Added for responsiveness
+    gap: "2rem",
+    flexWrap: "wrap",
   },
   menuItem: {
-    position: 'relative',
-    padding: '0.5rem 0',
-    cursor: 'pointer',
-    fontSize: '1rem',
+    position: "relative",
+    padding: "0.5rem 0",
+    cursor: "pointer",
+    fontSize: "1rem",
     fontWeight: 500,
   },
   link: {
-    textDecoration: 'none',
-    color: '#fff',
-    transition: 'color 0.3s ease',
+    textDecoration: "none",
+    color: "#fff",
+    transition: "color 0.3s ease",
   },
   active: {
-    color: '#c9a227',
-    borderBottom: '2px solid #007bff',
+    color: "#c9a227",
+    borderBottom: "2px solid #007bff",
   },
   dropdownTitle: {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0.5rem',
-  color: '#fff',
-},
-
-dropdown: {
-  position: 'absolute',
-  top: '100%',              // ⭐ should be below menu, not 40%
-  left: 0,
-  backgroundColor: '#ffffff',  // ⭐ correct white color
-  boxShadow: '0 8px 25px rgba(0,0,0,0.15)',
-  borderRadius: '6px',
-  padding: '8px 0',
-  minWidth: '220px',
-  zIndex: 9999,
-},
-
-dropdownItem: {
-  display: 'block',
-  padding: '12px 18px',
-  color: '#333333',          // ⭐ black text
-  textDecoration: 'none',
-  transition: '0.2s',
-  cursor: 'pointer',
-},
-
+    display: "flex",
+    alignItems: "center",
+    gap: "0.5rem",
+    color: "#fff",
+  },
+  dropdown: {
+    position: "absolute",
+    top: "100%",
+    left: 0,
+    backgroundColor: "#ffffff",
+    boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+    borderRadius: "6px",
+    padding: "8px 0",
+    minWidth: "220px",
+    zIndex: 9999,
+  },
+  dropdownItem: {
+    display: "block",
+    padding: "12px 18px",
+    color: "#333333",
+    textDecoration: "none",
+    transition: "0.2s",
+    cursor: "pointer",
+  },
   searchButton: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    padding: '0.5rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    padding: "0.5rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   search: {
-    fontSize: '1.2rem',
-    color: '#fff',
+    fontSize: "1.2rem",
+    color: "#fff",
   },
 };

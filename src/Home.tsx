@@ -4,6 +4,7 @@ import MachineDemo from "./components/Machinedemo";
 import MachineDemosByCity from "./components/Democity";
 import Videosection from "./components/Videosection";
 import PopularSearches from "./components/Popularsearch";
+
 export default function Home() {
   return (
     <>
@@ -35,7 +36,6 @@ export default function Home() {
               </button>
             </div>
 
-
             {/* BUTTONS */}
             <div className="buttons">
               <button className="yellowBtn">Browse Machines</button>
@@ -49,92 +49,100 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Videosection/>
-      <MachineDemo/>
-      <MachineDemosByCity/>
-      <PopularSearches/>
-      {/* CSS INSIDE SAME FILE */}
+
+      <Videosection />
+      <MachineDemo />
+      <MachineDemosByCity />
+      <PopularSearches />
+
       <style>{`
+        * {
+          box-sizing: border-box;
+        }
+
         .hero {
-          height: 100vh;
+          min-height: 100vh;
+          width: 100%;
           background-size: cover;
           background-position: center;
+          background-repeat: no-repeat;
           position: relative;
-          font-family:"Arial, sans-serif";
-        
-        
+          font-family: "Arial, sans-serif";
+          display: flex;
         }
 
         .overlay {
           background: rgba(0,0,0,0.55);
-          height: 100%;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
           color: white;
+          padding: 40px 20px;
         }
 
         .content {
-          max-width: 900px;
-          padding: 20px;
-          
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
         }
 
         h1 {
-          font-size: 56px;
+          font-size: clamp(32px, 5vw, 56px);
           font-weight: 700;
           margin-bottom: 20px;
         }
 
         .subtitle {
-          font-size: 22px;
+          font-size: clamp(16px, 2.5vw, 22px);
           margin-bottom: 15px;
         }
 
         .desc {
-          font-size: 18px;
+          font-size: clamp(14px, 2vw, 18px);
           opacity: 0.9;
           margin-bottom: 30px;
         }
 
         /* SEARCH */
-        /* SEARCH BOX */
-.searchBox {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25px;
-}
+        .searchBox {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 25px;
+          flex-wrap: wrap;
+          width: 100%;
+        }
 
-.searchBox input {
-  width: 550px;
-  padding: 16px;
-  border: 2px solid #ddd;
-  border-right: none;
-  border-radius: 6px 0 0 6px;
-  font-size: 16px;
-  outline: none;          /* ❌ remove blue cursor border */
-}
+        .searchBox input {
+          width: 100%;
+          max-width: 550px;
+          padding: 16px;
+          border: 2px solid #ddd;
+          border-right: none;
+          border-radius: 6px 0 0 6px;
+          font-size: 16px;
+          outline: none;
+        }
 
-.searchBox input:focus {
-  outline: none;
-  box-shadow: none;       /* ❌ remove browser glow */
-  border-color: #ddd;
-}
+        .searchBox input:focus {
+          outline: none;
+          box-shadow: none;
+          border-color: #ddd;
+        }
 
-.searchBtn {
-  padding: 0 22px;
-  border: 2px solid #ddd;
-  border-left: none;
-  background: #1b2a41;
-  color: white;
-  font-size: 18px;
-  border-radius: 0 6px 6px 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
+        .searchBtn {
+          padding: 0 22px;
+          border: 2px solid #ddd;
+          border-left: none;
+          background: #1b2a41;
+          color: white;
+          font-size: 18px;
+          border-radius: 0 6px 6px 0;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+        }
 
         /* BUTTONS */
         .buttons {
@@ -142,6 +150,7 @@ export default function Home() {
           gap: 20px;
           justify-content: center;
           margin-bottom: 20px;
+          flex-wrap: wrap;
         }
 
         .yellowBtn {
@@ -152,8 +161,8 @@ export default function Home() {
           border-radius: 6px;
           cursor: pointer;
           font-weight: bold;
-          color:#111;
-          font-family:"Arial, sans-serif";
+          color: #1b2a41;
+          font-family: "Arial, sans-serif";
         }
 
         .darkBtn {
@@ -164,7 +173,7 @@ export default function Home() {
           font-size: 18px;
           border-radius: 6px;
           cursor: pointer;
-          font-family:"Arial, sans-serif";
+          font-family: "Arial, sans-serif";
         }
 
         .trust {
@@ -173,11 +182,44 @@ export default function Home() {
         }
 
         /* MOBILE */
-        @media(max-width:768px){
-          h1{font-size:34px}
-          .subtitle{font-size:18px}
-          .searchBox input{width:250px}
-          .buttons{flex-direction:column}
+        @media (max-width: 768px) {
+          .overlay {
+            padding: 60px 16px;
+          }
+
+          .searchBox {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .searchBox input {
+            max-width: 100%;
+            border-radius: 6px;
+            border-right: 2px solid #ddd;
+            margin-bottom: 10px;
+          }
+
+          .searchBtn {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 6px;
+            border-left: 2px solid #ddd;
+          }
+
+          .buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .yellowBtn,
+          .darkBtn {
+            width: 100%;
+            max-width: 300px;
+          }
+
+          .trust {
+            font-size: 14px;
+          }
         }
       `}</style>
     </>

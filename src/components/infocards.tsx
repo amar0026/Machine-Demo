@@ -63,7 +63,6 @@ function Card({ title, icon, children, active }: CardProps) {
         overflow: "hidden",
       }}
     >
-      {/* Bottom gold accent bar */}
       <div
         style={{
           position: "absolute",
@@ -80,7 +79,7 @@ function Card({ title, icon, children, active }: CardProps) {
 
       <h3
         style={{
-          fontFamily: "'Playfair Display', Georgia, serif",
+          fontFamily: "Arial, sans-serif",
           fontWeight: 700,
           fontSize: "1.25rem",
           color: "#1a1a2e",
@@ -91,11 +90,17 @@ function Card({ title, icon, children, active }: CardProps) {
         {title}
       </h3>
 
-      <div style={{ color: "#4a4a5a", fontFamily: "'DM Sans', sans-serif", fontSize: "0.95rem", lineHeight: 1.7 }}>
+      <div
+        style={{
+          color: "#4a4a5a",
+          fontFamily: "Arial, sans-serif",
+          fontSize: "0.95rem",
+          lineHeight: 1.7,
+        }}
+      >
         {children}
       </div>
 
-      {/* Icon - bottom right */}
       <div
         style={{
           position: "absolute",
@@ -118,6 +123,7 @@ export default function InfoCards() {
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap"
         rel="stylesheet"
       />
+
       <div
         style={{
           background: "#f7f4ef",
@@ -138,38 +144,53 @@ export default function InfoCards() {
             width: "100%",
           }}
         >
-          {/* About */}
           <Card title="About" icon={accountantIcon}>
             <p>
-             Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
+              Trusted machinery intelligence. Reviews, specs, and supplier access in one place.
             </p>
           </Card>
 
-          {/* Contact - active by default */}
           <Card title="Contact" icon={contactIcon} active>
             <p style={{ marginBottom: "6px" }}>Mon–Sat 10:00AM – 6:00PM</p>
             <p style={{ marginBottom: "14px", color: "#888" }}>Sunday Closed</p>
+
             <a
               href="mailto:Info@actaxsolution.in"
-              style={{ display: "block", color: "#C9A84C", textDecoration: "none", marginBottom: "6px", fontWeight: 500 }}
+              style={{
+                display: "block",
+                color: "#C9A84C",
+                textDecoration: "none",
+                marginBottom: "6px",
+                fontWeight: 500,
+              }}
             >
               Info@actaxsolution.in
             </a>
+
             <a
               href="tel:+918076699897"
-              style={{ display: "block", color: "#4a4a5a", textDecoration: "none", marginBottom: "4px" }}
+              style={{
+                display: "block",
+                color: "#4a4a5a",
+                textDecoration: "none",
+                marginBottom: "4px",
+              }}
             >
               +918076699897
             </a>
+
             <a
               href="tel:+919217639029"
-              style={{ display: "block", color: "#4a4a5a", textDecoration: "none" }}
+              style={{
+                display: "block",
+                color: "#4a4a5a",
+                textDecoration: "none",
+              }}
             >
               +91-9217639029
             </a>
           </Card>
 
-          {/* Address */}
           <Card title="Address" icon={mapIcon}>
             <p>Office No. 240, Apsara Complex</p>
             <p>Ghaziabad, Uttar Pradesh</p>

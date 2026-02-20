@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaSearch, FaTractor,} from "react-icons/fa";
+import { FaSearch, FaTractor } from "react-icons/fa";
 
 const searchTerms = [
   { label: "Sprayer", col: 0 },
@@ -46,12 +46,10 @@ export default function PopularSearches() {
       @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap');
 
       .ps-section {
-        background: #f4c430;
+        background: #1b2a41;
         position: relative;
         overflow: hidden;
-        font-family:"Arial, sans-serif";
-        
-        margin-bottom: 10px;
+        font-family: "Arial, sans-serif";
       }
 
       .ps-inner {
@@ -79,7 +77,7 @@ export default function PopularSearches() {
       .ps-icon-wrap {
         width: 50px;
         height: 50px;
-        background: #11233f;
+        background: #ffff;
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -95,18 +93,18 @@ export default function PopularSearches() {
         font-weight: 700;
         letter-spacing: 4px;
         text-transform: uppercase;
-        color:  #11233f;
+        color: #ffff;
         opacity: 10;
       }
 
       .ps-searchbar {
         display: flex;
         align-items: center;
-        background: #11233f;
+        background: #ffff;
         border-radius: 6px;
         overflow: hidden;
         width: 320px;
-        padding:6px 15px;
+        padding: 6px 15px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         transition: box-shadow 0.2s;
       }
@@ -120,14 +118,14 @@ export default function PopularSearches() {
         background: transparent;
         border: none;
         outline: none;
-        color: #fff;
+        color: #0000;
         font-family: "Arial, sans-serif";
         font-size: 20px;
         padding: 12px 0;
       }
 
       .ps-searchbar input::placeholder {
-        color: rgba(255,255,255,0.4);
+        color: #1b2a41;
       }
 
       .ps-search-btn {
@@ -154,7 +152,7 @@ export default function PopularSearches() {
       .ps-divider {
         width: 100%;
         height: 2px;
-        background: rgba(0,0,0,0.1);
+        background: #ffff;
         margin-bottom: 32px;
         border-radius: 2px;
       }
@@ -171,6 +169,7 @@ export default function PopularSearches() {
         gap: 2px;
         border-left: 2px solid rgba(0,0,0,0.1);
         padding-left: 24px;
+        
       }
 
       .ps-col:first-child {
@@ -184,7 +183,7 @@ export default function PopularSearches() {
         gap: 8px;
         font-size: 19px;
         font-weight: 500;
-        color: #11233f;
+        color: #ffff;
         padding: 9px 14px 9px 0;
         cursor: pointer;
         transition: all 0.18s ease;
@@ -201,7 +200,7 @@ export default function PopularSearches() {
 
       .ps-tag:hover,
       .ps-tag.active {
-        color: #000;
+        color: #f4c430;
         padding-left: 6px;
         background: rgba(0,0,0,0.06);
         border-radius: 6px;
@@ -211,7 +210,7 @@ export default function PopularSearches() {
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background: #11233f;
+        background: #ffff;
         opacity: 0.4;
         flex-shrink: 0;
         transition: opacity 0.18s, transform 0.18s;
@@ -222,7 +221,6 @@ export default function PopularSearches() {
         opacity: 1;
         transform: scale(1.5);
       }
-
 
       @media (max-width: 768px) {
         .ps-grid { grid-template-columns: 1fr 1fr; }
@@ -288,7 +286,6 @@ export default function PopularSearches() {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

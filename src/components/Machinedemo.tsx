@@ -1,4 +1,3 @@
-
 // Icon components (inline SVG, no external deps)
 const VideoIcon = () => (
   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a2744" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -52,12 +51,11 @@ export default function AboutSection() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:wght@400;600&display=swap');
 
         .about-section {
-          font-family: 'Segoe UI',sans-serif;
+          font-family: 'Segoe UI', sans-serif;
           background: #ffff;
           padding: 8px 40px;
           max-width: 1920px;
           margin: 0 auto;
-         
         }
 
         .about-header {
@@ -81,8 +79,8 @@ export default function AboutSection() {
           font-size: 1.05rem;
           font-weight: 400;
           color: #1a2744;
-          border-radius: 2px;
-          font-family:"Arial, sans-serif";
+          border-radius: 6px;
+          font-family: "Arial, sans-serif";
         }
 
         .about-tagline strong {
@@ -101,7 +99,7 @@ export default function AboutSection() {
           line-height: 1.75;
           color: #2d2d2d;
           margin: 0 0 22px;
-          font-family:"Arial, sans-serif";
+          font-family: "Arial, sans-serif";
         }
 
         .about-left p strong {
@@ -177,7 +175,7 @@ export default function AboutSection() {
           font-family: 'Playfair Display', Georgia, serif;
           font-size: 1.05rem;
           font-weight: 700;
-          border-radius: 4px;
+          border-radius: 6px;
           cursor: pointer;
           width: 100%;
           letter-spacing: 0.01em;
@@ -187,6 +185,7 @@ export default function AboutSection() {
         .cta-btn:hover {
           background: #e0b600;
           transform: translateY(-1px);
+          font-family: "Arial, sans-serif";
         }
 
         @media (max-width: 720px) {
@@ -200,7 +199,6 @@ export default function AboutSection() {
       `}</style>
 
       <section className="about-section">
-        {/* Header */}
         <div className="about-header">
           <h2 className="about-title">About Machine Demo</h2>
           <span className="about-tagline">
@@ -208,9 +206,7 @@ export default function AboutSection() {
           </span>
         </div>
 
-        {/* Body */}
         <div className="about-body">
-          {/* Left: Text */}
           <div className="about-left">
             <p>
               Machine Demo is a machinery discovery platform where buyers explore{" "}
@@ -218,13 +214,12 @@ export default function AboutSection() {
               <strong>trusted suppliers</strong> — all in one place.
             </p>
             <p>
-              We make it easy for <strong>farmers</strong>, <strong>contractors</strong>, and
-              businesses to <strong>compare</strong> machines, understand real use cases, and{" "}
+              We make it easy for <strong>farmers</strong>, <strong>contractors</strong>, and businesses to{" "}
+              <strong>compare</strong> machines, understand real use cases, and{" "}
               <strong>get direct pricing</strong> without confusion.
             </p>
             <p>
-              Our goal is to <strong>simplify machinery</strong> buying and help you make
-              confident investment decisions.
+              Our goal is to <strong>simplify machinery</strong> buying and help you make confident investment decisions.
             </p>
 
             <div className="features-list">
@@ -239,7 +234,6 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right: Images + CTA */}
           <div className="about-right">
             <img src={img1} alt="Worker operating machinery" className="img-top" />
             <div className="img-row">

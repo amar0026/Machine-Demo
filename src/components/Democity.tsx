@@ -1,25 +1,22 @@
+import { useState } from "react";
 
 const cities = [
-  "Mumbai", "Delhi", "Bengaluru",
-  "Hyderabad", "Ahmedabad", "Chennai",
-  "Kolkata", "Surat", "Pune",
-  "Jaipur", "Ambattur", "Ajmer",
-  "Gorakhpur", "Nangloi Jat", "Rajkot",
-  "Coimbatore", "Asansol", "Morvi",
+  "MUMBAI", "DELHI", "BENGALURU", "HYDERABAD", "AHMEDABAD", "CHENNAI",
+  "KOLKATA", "SURAT", "PUNE", "JAIPUR", "AMBATUR", "AJMER",
+  "GORAKHPUR", "NANGLOI JAT", "RAJKOT", "COIMBATORE", "ASANSOL", "MORVI",
 ];
 
-const excavatorImg =
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80";
-
 export default function MachineDemosByCity() {
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleCities = showAll ? cities : cities.slice(0, 6);
+
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:wght@400;500&display=swap');
-
         .mdc-section {
-          font-family:"Arial, sans-serif";
-          background: #ffff;
+          font-family: Arial, sans-serif;
+          background: #fff;
           padding: 72px 40px;
           max-width: 1920px;
           margin: 0 auto;
@@ -31,91 +28,85 @@ export default function MachineDemosByCity() {
         }
 
         .mdc-title {
-          font-family:"Arial, sans-serif";
           font-size: clamp(1.8rem, 3.5vw, 2.6rem);
           font-weight: 800;
           color: #1a2744;
-          margin: 0 0 14px;
-          letter-spacing: -0.02em;
         }
 
         .mdc-subtitle {
-          display: inline-block;
+  display: inline-block;
           background: #f5c800;
           padding: 7px 20px;
           font-size: 1.05rem;
           font-weight: 400;
           color: #1a2744;
-          border-radius: 2px;
+          border-radius: 6px;
           font-family:"Arial, sans-serif";
-        }
-
-        .mdc-body {
-          display: grid;
-          grid-template-columns: 360px 1fr;
-          gap: 32px;
-          align-items: start;
-        }
-
-        .mdc-image {
-          width: 100%;
-          height: 100%;
-          min-height: 520px;
-          object-fit: cover;
-          border-radius: 14px;
-          display: block;
-        }
+}
 
         .mdc-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
+          gap: 24px;
         }
 
         .city-card {
-          background: #fff;
-          border-radius: 10px;
-          padding: 22px 16px;
+          background: white;
+          padding: 32px 20px;
+          border-radius: 16px;
           text-align: center;
-          font-size: 1.05rem;
-          font-weight: 500;
+          font-size: 1.25rem;
+          font-weight: 600;
           color: #1a2744;
           cursor: pointer;
-          border: 1px solid #e8e8e8;
-          transition: background 0.18s, color 0.18s, transform 0.15s, border-color 0.18s;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+          height: 150px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+          transition: all 0.3s ease;
         }
 
         .city-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 0 40px 10px rgba(251,191,36,0.35);
+        }
+
+        .view-more-btn {
+          display: block;
+          margin: 40px auto 0;
+          padding: 12px 32px;
           background: #f5c800;
           color: #1a2744;
-          border-color: #f5c800;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(245,200,0,0.25);
+          border: none;
+          font-weight: 600;
+          font-size: 1.1rem;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .view-more-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0px 6px 16px rgba(245,200,0,0.35);
         }
 
         @media (max-width: 800px) {
-          .mdc-body {
-            grid-template-columns: 1fr;
-          }
-          .mdc-image {
-            min-height: 260px;
-            height: 260px;
-          }
-          .mdc-section {
-            padding: 48px 20px;
+          .mdc-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
 
         @media (max-width: 480px) {
           .mdc-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
           }
         }
       `}</style>
 
       <section className="mdc-section">
-        {/* Header */}
         <div className="mdc-header">
           <h2 className="mdc-title">Machine Demos By City</h2>
           <p className="mdc-subtitle">
@@ -123,24 +114,21 @@ export default function MachineDemosByCity() {
           </p>
         </div>
 
-        {/* Body */}
-        <div className="mdc-body">
-          {/* Left: Image */}
-          <img
-            src={excavatorImg}
-            alt="Excavator at construction site"
-            className="mdc-image"
-          />
-
-          {/* Right: City Grid */}
-          <div className="mdc-grid">
-            {cities.map((city) => (
-              <div key={city} className="city-card">
-                {city}
-              </div>
-            ))}
-          </div>
+        <div className="mdc-grid">
+          {visibleCities.map((city) => (
+            <div key={city} className="city-card">
+              {city}
+            </div>
+          ))}
         </div>
+
+        {/* View More Button */}
+        <button
+          className="view-more-btn"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "View Less" : "View More"}
+        </button>
       </section>
     </>
   );
