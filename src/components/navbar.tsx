@@ -12,7 +12,6 @@ import { Link, useLocation } from "react-router-dom"; // Added useLocation
 
 import logo from "../assets/logo.png";
 
-
 const categories = [
   "Construction",
   "Agriculture",
@@ -159,7 +158,7 @@ const styles: Styles = {
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '0.1rem 2rem',   // ↓ reduced height
-  backgroundColor: '#c9a227',
+  backgroundColor: '#f4c430',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   position: 'sticky',
   top: 0,
@@ -168,6 +167,7 @@ const styles: Styles = {
 },
 
   logoLink: {
+    
     textDecoration: 'none',
   },
   logo: {

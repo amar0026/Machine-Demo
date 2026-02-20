@@ -46,12 +46,12 @@ export default function PopularSearches() {
       @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap');
 
       .ps-section {
-        background: #f0c000;
+        background: #f4c430;
         position: relative;
         overflow: hidden;
-        font-family: 'Barlow', sans-serif;
-       
+        font-family:"Arial, sans-serif";
         padding: 0;
+         margin-bottom: 10px;
       }
 
       .ps-inner {
@@ -89,23 +89,23 @@ export default function PopularSearches() {
       }
 
       .ps-heading {
-        font-family:  'Playfair Display', Georgia, serif;
+        font-family: "Arial, sans-serif";
         font-size: 20px;
         font-weight: 700;
         letter-spacing: 4px;
         text-transform: uppercase;
-        color: #11233f;
-        opacity: 0.7;
+        color:  #11233f;
+        opacity: 10;
       }
 
       .ps-searchbar {
         display: flex;
         align-items: center;
         background: #11233f;
-        border-radius: 50px;
+        border-radius: 6px;
         overflow: hidden;
         width: 320px;
-        padding: 0 6px 0 20px;
+        padding:6px 15px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         transition: box-shadow 0.2s;
       }
@@ -120,7 +120,7 @@ export default function PopularSearches() {
         border: none;
         outline: none;
         color: #fff;
-        font-family: 'Barlow', sans-serif;
+        font-family: "Arial, sans-serif";
         font-size: 20px;
         padding: 12px 0;
       }

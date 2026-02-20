@@ -150,6 +150,7 @@ export default function Home() {
           border-radius: 6px;
           cursor: pointer;
           font-weight: bold;
+          color:#111;
         }
 
         .darkBtn {

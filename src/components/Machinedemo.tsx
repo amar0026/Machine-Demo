@@ -52,7 +52,7 @@ export default function AboutSection() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:wght@400;600&display=swap');
 
         .about-section {
-          font-family: 'Source Serif 4', Georgia, serif;
+          font-family: "Arial, sans-serif";
           background: #ffff;
           padding: 15px 5px;
           max-width: 1100px;
