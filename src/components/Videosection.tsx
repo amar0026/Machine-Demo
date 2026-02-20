@@ -1,26 +1,15 @@
-import { useEffect } from "react";
-import { FaHeart, FaArrowRight } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
+import { FaHeart, FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-interface Product {
-  title: string;
-  category: string;
-  location: string;
-  image: string;
-}
-
-interface SectionProps {
-  label: string;
-  products: Product[];
-}
-
-const categories: SectionProps[] = [
+const categories = [
   {
     label: "CONSTRUCTION MACHINES",
     products: [
       { title: "Komatsu PC210 Excavator Demo...", category: "Construction", location: "Japan", image: "/images/c1.jpg" },
       { title: "Largest Mining Excavators...", category: "Construction", location: "Europe", image: "/images/c2.jpg" },
-      { title: "Komatsu PC210 Excavator Demo...", category: "Construction", location: "Japan", image: "/images/c1.jpg" },
       { title: "Excavator Operating Guide...", category: "Construction", location: "Japan", image: "/images/c1.jpg" },
+      { title: "Heavy Loader Machine Demo...", category: "Construction", location: "USA", image: "/images/c2.jpg" },
     ],
   },
   {
@@ -28,19 +17,27 @@ const categories: SectionProps[] = [
     products: [
       { title: "Mini Rice Mill Machine...", category: "Agriculture", location: "India", image: "/images/a1.jpg" },
       { title: "KAMA 6N70 Mini Rice Mill...", category: "Agriculture", location: "India", image: "/images/a2.jpg" },
-      { title: "Compact Paddy Demo...", category: "Agriculture", location: "•", image: "/images/a3.jpg" },
+      { title: "Compact Paddy Demo...", category: "Agriculture", location: "India", image: "/images/a3.jpg" },
+      { title: "High-Performance Rice Mill...", category: "Agriculture", location: "India", image: "/images/a1.jpg" },
+    ],
+  },
+  {
+    label: "OUR PICKS",
+    products: [
+      { title: "Mini Rice Mill Machine...", category: "Agriculture", location: "India", image: "/images/a1.jpg" },
+      { title: "KAMA 6N70 Mini Rice Mill...", category: "Agriculture", location: "India", image: "/images/a2.jpg" },
+      { title: "Compact Paddy Demo...", category: "Agriculture", location: "India", image: "/images/a3.jpg" },
       { title: "High-Performance Rice Mill...", category: "Agriculture", location: "India", image: "/images/a1.jpg" },
     ],
   },
 ];
 
-const ProductCard: React.FC<Product> = ({ title, category, location, image }) => (
+const ProductCard = ({ title, category, location, image }) => (
   <div className="card">
     <div className="imgWrap">
       <img src={image} alt={title} className="cardImg" />
       <FaHeart className="heartIcon" />
     </div>
-
     <div className="cardInfo">
       <p className="cardTitle">{title}</p>
       <div className="cardMeta">
@@ -52,25 +49,59 @@ const ProductCard: React.FC<Product> = ({ title, category, location, image }) =>
   </div>
 );
 
-const Section: React.FC<SectionProps> = ({ label, products }) => {
-  const loopProducts = [...products, ...products];
+const Section = ({ label, products }) => {
+  const [direction, setDirection] = useState("right");
+  const [speed, setSpeed] = useState(60);
+
+  const handleLeft = () => {
+    setDirection("right");
+    setSpeed(80);
+    setTimeout(() => setSpeed(60), 500);
+  };
+
+  const handleRight = () => {
+    setDirection("left");
+    setSpeed(80);
+    setTimeout(() => setSpeed(60), 500);
+  };
 
   return (
     <div className="sectionBlock">
       <div className="sectionHeader">
         <h1 className="sectionTitle">{label}</h1>
+      </div>
 
-        <button className="viewAll">
-          View All <FaArrowRight style={{ marginLeft: 6 }} />
+      <div className="sliderWrapper">
+        {/* LEFT ARROW — outside the marquee */}
+        <button className="navArrow" onClick={handleLeft} aria-label="Previous">
+          <FaChevronLeft />
+        </button>
+
+        <div className="marqueeWrap">
+          <Marquee
+            direction={direction}
+            speed={speed}
+            pauseOnHover
+            gradient={false}
+          >
+            {products.map((p, i) => (
+              <div key={i} style={{ margin: "0 8px" }}>
+                <ProductCard {...p} />
+              </div>
+            ))}
+          </Marquee>
+        </div>
+
+        {/* RIGHT ARROW — outside the marquee */}
+        <button className="navArrow" onClick={handleRight} aria-label="Next">
+          <FaChevronRight />
         </button>
       </div>
 
-      <div className="infiniteSlider">
-        <div className="track">
-          {loopProducts.map((p, i) => (
-            <ProductCard key={i} {...p} />
-          ))}
-        </div>
+      <div className="viewAllWrap">
+        <button className="viewAll">
+          View All <FaArrowRight style={{ marginLeft: 6 }} />
+        </button>
       </div>
     </div>
   );
@@ -101,28 +132,31 @@ const css = `
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 .wrapper {
-  font-family: "Arial", sans-serif;
+  font-family: Arial, sans-serif;
   background: #f5f7fa;
   padding: 40px clamp(16px, 5vw, 60px);
 }
 
-.sectionBlock { margin-bottom: 40px; }
+.sectionBlock { margin-bottom: 60px; }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .sectionTitle {
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(20px, 3vw, 30px);
   font-weight: 900;
   color: #1a2744;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.viewAllWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .viewAll {
@@ -138,33 +172,26 @@ const css = `
   align-items: center;
 }
 
-.infiniteSlider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.track {
+/* SLIDER WRAPPER — arrows sit as flex siblings outside marquee */
+.sliderWrapper {
   display: flex;
-  width: max-content;
-  animation: scrollLeft linear infinite;
-  animation-duration: 18s;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
 }
 
-.track:hover {
-  animation-play-state: paused;
+.marqueeWrap {
+  flex: 1;
+  overflow: hidden;
 }
 
+/* CARD */
 .card {
-  min-width: 260px;
-  max-width: 260px;
+  width: 260px;
   background: #fff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  flex-shrink: 0;
-  transition: .3s;
+  transition: transform .3s, box-shadow .3s;
 }
 
 .card:hover {
@@ -174,7 +201,6 @@ const css = `
 
 .imgWrap {
   position: relative;
-  width: 100%;
   height: 160px;
   background: #e2e8f0;
 }
@@ -190,22 +216,20 @@ const css = `
   top: 10px;
   right: 10px;
   color: white;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.4);
   padding: 6px;
   border-radius: 50%;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.cardInfo {
-  padding: 10px 12px 14px;
-}
+.cardInfo { padding: 12px; }
 
 .cardTitle {
   font-size: 14px;
   font-weight: 600;
-  color: #111;
-  line-height: 1.4;
   margin-bottom: 8px;
+  color: #111;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -214,25 +238,35 @@ const css = `
 
 .cardMeta {
   display: flex;
-  align-items: center;
   gap: 4px;
-}
-
-.tag, .loc, .dot {
   font-size: 11px;
   color: #666;
 }
 
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* NAVIGATION ARROWS */
+.navArrow {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+ 
+ 
+  color: #1b2a41;
+  font-size: 16px;
+  cursor: pointer;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Mobile Responsive */
+.navArrow:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
 @media (max-width: 768px) {
-  .card {
-    min-width: 220px;
-    max-width: 220px;
-  }
+  .card { width: 220px; }
+  .navArrow { width: 36px; height: 36px; font-size: 13px; }
 }
 `;

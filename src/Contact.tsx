@@ -153,14 +153,16 @@ const styles: any = {
   },
 
   button: {
-    padding: "15px",
-    background: "#c9a227",
-    color: "#fff",
-    border: "none",
-    borderRadius: "8px",
-    fontSize: "18px",
-    cursor: "pointer",
-    width: "60%",
+     padding: "14px 32px",
+  background: "#f5c800",          // Same as View More
+  color: "#1a2744",
+  border: "none",
+  fontWeight: 600,
+  fontSize: "1.1rem",
+  borderRadius: "10px",
+  cursor: "pointer",
+  width: "auto",
+  transition: "all 0.3s ease",
   },
 
   map: {

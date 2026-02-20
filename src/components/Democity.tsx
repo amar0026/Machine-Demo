@@ -74,25 +74,26 @@ export default function MachineDemosByCity() {
           box-shadow: 0 0 40px 10px rgba(251,191,36,0.35);
         }
 
-        .view-more-btn {
-          display: block;
-          margin: 40px auto 0;
-          padding: 12px 32px;
-          background: #f5c800;
-          color: #1a2744;
-          border: none;
-          font-weight: 600;
-          font-size: 1.1rem;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
+       .view-more-btn {
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 32px;
+  background: #f5c800;        /* Normal Yellow */
+  color: #1a2744;             /* Dark Blue */
+  border: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-        .view-more-btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0px 6px 16px rgba(245,200,0,0.35);
-        }
-
+.view-more-btn:hover {
+  background: #1a2744;        /* Dark Blue on hover */
+  color: #ffffff;             /* White text */
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 16px rgba(26,39,68,0.35);
+}
         @media (max-width: 800px) {
           .mdc-grid {
             grid-template-columns: repeat(2, 1fr);
