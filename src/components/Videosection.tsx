@@ -2,7 +2,19 @@ import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaHeart, FaArrowRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const categories = [
+interface Product {
+  title: string;
+  category: string;
+  location: string;
+  image: string;
+}
+
+interface Category {
+  label: string;
+  products: Product[];
+}
+
+const categories: Category[] = [
   {
     label: "CONSTRUCTION MACHINES",
     products: [
@@ -32,7 +44,7 @@ const categories = [
   },
 ];
 
-const ProductCard = ({ title, category, location, image }) => (
+const ProductCard: React.FC<Product> = ({ title, category, location, image }) => (
   <div className="card">
     <div className="imgWrap">
       <img src={image} alt={title} className="cardImg" />
@@ -49,19 +61,27 @@ const ProductCard = ({ title, category, location, image }) => (
   </div>
 );
 
-const Section = ({ label, products }) => {
-  const [direction, setDirection] = useState("right");
-  const [speed, setSpeed] = useState(60);
+interface SectionProps {
+  label: string;
+  products: Product[];
+}
+
+const Section: React.FC<SectionProps> = ({ label, products }) => {
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const [speed, setSpeed] = useState<number>(60);
+  const [key, setKey] = useState<number>(0); // forces marquee re-render on arrow click
 
   const handleLeft = () => {
     setDirection("right");
     setSpeed(80);
+    setKey(prev => prev + 1);
     setTimeout(() => setSpeed(60), 500);
   };
 
   const handleRight = () => {
     setDirection("left");
     setSpeed(80);
+    setKey(prev => prev + 1);
     setTimeout(() => setSpeed(60), 500);
   };
 
@@ -72,13 +92,13 @@ const Section = ({ label, products }) => {
       </div>
 
       <div className="sliderWrapper">
-        {/* LEFT ARROW — outside the marquee */}
         <button className="navArrow" onClick={handleLeft} aria-label="Previous">
           <FaChevronLeft />
         </button>
 
         <div className="marqueeWrap">
           <Marquee
+            key={key}
             direction={direction}
             speed={speed}
             pauseOnHover
@@ -92,7 +112,6 @@ const Section = ({ label, products }) => {
           </Marquee>
         </div>
 
-        {/* RIGHT ARROW — outside the marquee */}
         <button className="navArrow" onClick={handleRight} aria-label="Next">
           <FaChevronRight />
         </button>
@@ -107,7 +126,7 @@ const Section = ({ label, products }) => {
   );
 };
 
-const TrendingProducts = () => {
+const TrendingProducts: React.FC = () => {
   useEffect(() => {
     if (!document.getElementById("trending-styles")) {
       const style = document.createElement("style");
@@ -172,7 +191,6 @@ const css = `
   align-items: center;
 }
 
-/* SLIDER WRAPPER — arrows sit as flex siblings outside marquee */
 .sliderWrapper {
   display: flex;
   align-items: center;
@@ -184,7 +202,6 @@ const css = `
   overflow: hidden;
 }
 
-/* CARD */
 .card {
   width: 260px;
   background: #fff;
@@ -243,17 +260,13 @@ const css = `
   color: #666;
 }
 
-/* NAVIGATION ARROWS */
 .navArrow {
   flex-shrink: 0;
   width: 44px;
   height: 44px;
- 
- 
   color: #1b2a41;
   font-size: 16px;
   cursor: pointer;
- 
   display: flex;
   align-items: center;
   justify-content: center;
