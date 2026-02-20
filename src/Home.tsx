@@ -60,7 +60,9 @@ export default function Home() {
           background-size: cover;
           background-position: center;
           position: relative;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family:"Arial, sans-serif";
+        
+        
         }
 
         .overlay {
@@ -151,6 +153,7 @@ export default function Home() {
           cursor: pointer;
           font-weight: bold;
           color:#111;
+          font-family:"Arial, sans-serif";
         }
 
         .darkBtn {
@@ -161,6 +164,7 @@ export default function Home() {
           font-size: 18px;
           border-radius: 6px;
           cursor: pointer;
+          font-family:"Arial, sans-serif";
         }
 
         .trust {

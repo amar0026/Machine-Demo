@@ -1,12 +1,13 @@
 import { useState } from "react";
 import {
-  FaFacebookF,
+  
   FaInstagram,
   FaSearch,
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaEnvelope,
   FaChevronDown,
+  FaYoutube,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom"; // Added useLocation
 
@@ -41,7 +42,7 @@ const Header = () => {
       {/* TOP BAR */}
       <div style={styles.topbar}>
         <div style={styles.topLeft}>
-          <FaFacebookF style={styles.icon} />
+          <FaYoutube style={styles.icon} />
           <FaInstagram style={styles.icon} />
         </div>
 
@@ -134,6 +135,7 @@ const styles: Styles = {
     fontSize: "14px",
     alignItems: "center",
     flexWrap: "wrap", // Added for responsiveness
+    maxWidth: "1920px"
   },
   topLeft: { 
     display: "flex", 

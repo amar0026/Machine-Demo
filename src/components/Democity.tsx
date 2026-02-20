@@ -20,8 +20,8 @@ export default function MachineDemosByCity() {
         .mdc-section {
           font-family:"Arial, sans-serif";
           background: #ffff;
-          padding: 72px 48px;
-          max-width: 1100px;
+          padding: 72px 40px;
+          max-width: 1920px;
           margin: 0 auto;
         }
 
@@ -31,7 +31,7 @@ export default function MachineDemosByCity() {
         }
 
         .mdc-title {
-          font-family: 'Playfair Display', Georgia, serif;
+          font-family:"Arial, sans-serif";
           font-size: clamp(1.8rem, 3.5vw, 2.6rem);
           font-weight: 800;
           color: #1a2744;
@@ -47,6 +47,7 @@ export default function MachineDemosByCity() {
           font-weight: 400;
           color: #1a2744;
           border-radius: 2px;
+          font-family:"Arial, sans-serif";
         }
 
         .mdc-body {

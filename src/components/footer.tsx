@@ -83,6 +83,7 @@ const styles: any = {
     background: "#f4c430",   // Yellow background
     color: "#1b2a41",
     padding: "30px 40px",
+    maxwidth:"1920px"
   },
 
   container: {

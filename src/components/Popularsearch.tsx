@@ -50,14 +50,15 @@ export default function PopularSearches() {
         position: relative;
         overflow: hidden;
         font-family:"Arial, sans-serif";
-        padding: 0;
-         margin-bottom: 10px;
+        
+        margin-bottom: 10px;
       }
 
       .ps-inner {
         position: relative;
         z-index: 1;
-        padding: 48px 60px 52px;
+        padding: 20px 40px;
+        max-width: 1920px;
       }
 
       .ps-header {

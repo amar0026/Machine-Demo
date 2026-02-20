@@ -104,7 +104,7 @@ const css = `
 }
 
 .wrapper{
-  font-family:'Segoe UI',sans-serif;
+  font-family:"Arial, sans-serif";
   background:#f5f7fa;
   padding:40px clamp(16px, 5vw, 60px); /* ✅ FIXED RESPONSIVE LEFT-RIGHT */
   width:100%;
@@ -144,6 +144,7 @@ const css = `
   padding:12px 22px;
   font-size:14px;
   font-weight:bold;
+  font-family:"Arial, sans-serif";
   color:#1b2a41;
   cursor:pointer;
   display:flex;

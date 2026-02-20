@@ -52,10 +52,10 @@ export default function AboutSection() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:wght@400;600&display=swap');
 
         .about-section {
-          font-family: "Arial, sans-serif";
+          font-family: 'Segoe UI',sans-serif;
           background: #ffff;
-          padding: 15px 5px;
-          max-width: 1100px;
+          padding: 8px 40px;
+          max-width: 1920px;
           margin: 0 auto;
          
         }
@@ -66,7 +66,7 @@ export default function AboutSection() {
         }
 
         .about-title {
-          font-family: 'Playfair Display', Georgia, serif;
+          font-family: "Arial, sans-serif";
           font-size: clamp(2rem, 4vw, 2.8rem);
           font-weight: 800;
           color: #1a2744;
@@ -82,6 +82,7 @@ export default function AboutSection() {
           font-weight: 400;
           color: #1a2744;
           border-radius: 2px;
+          font-family:"Arial, sans-serif";
         }
 
         .about-tagline strong {
@@ -100,6 +101,7 @@ export default function AboutSection() {
           line-height: 1.75;
           color: #2d2d2d;
           margin: 0 0 22px;
+          font-family:"Arial, sans-serif";
         }
 
         .about-left p strong {

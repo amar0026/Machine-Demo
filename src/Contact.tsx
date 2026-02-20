@@ -66,6 +66,7 @@ const styles: any = {
     backgroundSize: "cover",
     backgroundPosition: "center",
     position: "relative",
+    
   },
 
   heroOverlay: {
