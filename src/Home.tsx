@@ -4,8 +4,6 @@ import MachineDemo from "./components/Machinedemo";
 import MachineDemosByCity from "./components/Democity";
 import Videosection from "./components/Videosection";
 import PopularSearches from "./components/Popularsearch";
-
-
 export default function Home() {
   return (
     <>

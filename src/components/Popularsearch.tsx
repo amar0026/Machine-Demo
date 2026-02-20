@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaSearch, FaTractor, FaSeedling } from "react-icons/fa";
+import { FaSearch, FaTractor,} from "react-icons/fa";
 
 const searchTerms = [
   { label: "Sprayer", col: 0 },
